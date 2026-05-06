@@ -13,7 +13,6 @@ import sys, time, os, threading
 import ev3fast
 # pyright: reportOptionalMemberAccess=false
 # pyright: reportMissingImports=false
-# sd
     
 class WroRobot:
 
