@@ -62,23 +62,27 @@ try:
     robot = WroRobot()
     # robot.calibrate()
     task = Task(robot)
-    try:
-        leds.set_color('LEFT', 'AMBER')
-        leds.set_color('RIGHT', 'AMBER')
-        robot.starting()
-        leds.set_color('LEFT', 'AMBER')
-        leds.set_color('RIGHT', 'AMBER')
-        start_time = time()
-        task.rohadjmeg()
-        task.masodik()
-        task.harmadik()
-        robot.log("Time: {:.4f}s".format((time() - start_time)))
-    except Exception as f:
-        robot.log(f)
-    finally:
-        robot.stop()
-        robot.gyroadatok.close()
-        exit()
+    # try:
+
+    # except Exception as f:
+        # robot.log(f)
+    # finally:
+        # robot.stop()
+        # robot.gyroadatok.close()
+        # exit()
 except Exception as e:
     error(e)
+
+
+
+leds.set_color('LEFT', 'AMBER')
+leds.set_color('RIGHT', 'AMBER')
+robot.starting()
+leds.set_color('LEFT', 'AMBER')
+leds.set_color('RIGHT', 'AMBER')
+start_time = time()
+task.rohadjmeg()
+task.masodik()
+task.harmadik()
+robot.log("Time: {:.4f}s".format((time() - start_time)))
 

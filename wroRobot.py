@@ -233,16 +233,17 @@ class WroRobot:
                 pass
         self.stop()
         
-    def egyenesedes(self, angle=None, speed = 30, seconds=1.0):
+    def egyenesedes(self, angle=None, speed = 300, seconds=1.0):
         angle = self.gyroSensor.angle if angle == None else angle
-        self.left_motor.run_timed(speed_sp=speed*10, time_sp=seconds*1000)
-        self.right_motor.run_timed(speed_sp=speed*10, time_sp=seconds*1000)
+        self.left_motor.run_timed(speed_sp=speed, time_sp=seconds*1000)
+        self.right_motor.run_timed(speed_sp=speed, time_sp=seconds*1000)
         self.left_motor.wait_until_not_moving()
         self.right_motor.wait_until_not_moving()
         if angle != None:
             self.log("Angle before correction: {}".format(self.gyroSensor.angle))
             self.setGyroCorrection(angle)
             self.log("Angle after correction: {}".format((self.gyroSensor.angle-self.gyroCorrection)))
+            self.log("\tGyrocorrection set to: {}".format(self.gyroCorrection))
 
     def alignToBlackWithSide(self, speed, blackThreshold = None):
         self.left_motor.run_forever(speed_sp = speed)            

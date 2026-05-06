@@ -67,8 +67,8 @@ class Task:
         self.grabber.on_to_position(speed=40, position=0)
         self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
         self.grabber.on_to_position(speed=100, position=110)
-        # self.grabber.on_to_position(speed=100, position=0)
-        # self.grabber.on_to_position(speed=100, position=110)
+        self.grabber.on_to_position(speed=100, position=0)
+        self.grabber.on_to_position(speed=100, position=110)
         # elviszi a kockákat a helyére
         self.robot.turnToGyroAngle(speed=200, angle=90)
         self.robot.forwardCmWithGyro(speed=800, distance=43, angle=90)
@@ -104,6 +104,8 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=4, angle=180)
         self.robot.turnToGyroAngle(speed=200, angle=90)
         self.robot.forwardCmWithGyro(speed=800, distance=-25.5, angle=90)
+        self.robot.egyenesedes(speed=-300, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=90)
         self.robot.turnToGyroAngle(speed=200, angle=0)
         # felveszi az 1*3 kockát
         self.robot.forwardCmWithGyro(speed=800, distance=3, angle=0)
@@ -113,8 +115,8 @@ class Task:
         self.grabber.on_to_position(speed=100, position=0)
         self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
         self.grabber.on_to_position(speed=100, position=110)
-        # self.grabber.on_to_position(speed=100, position=0)
-        # self.grabber.on_to_position(speed=100, position=110)
+        self.grabber.on_to_position(speed=100, position=0)
+        self.grabber.on_to_position(speed=100, position=110)
         self.robot.turnToGyroAngle(speed=200, angle=90)
         # elviszi a kockákat
         self.robot.forwardCmWithGyro(speed=800, distance=41, angle=90)
@@ -145,13 +147,13 @@ class Task:
     def harmadik(self):
         # elmegy a 3. 1*3 kockáért
         self.robot.turnToGyroAngle(speed=200, angle=180)
-        self.robot.forwardCmWithGyro(speed=800, distance=20, angle=180)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=180)
         self.robot.alignToBlackWithSide(speed=400, blackThreshold=7)
         self.robot.forwardCmWithGyro(speed=800, distance=4, angle=180)
         self.robot.turnToGyroAngle(speed=200, angle=90)
         self.robot.forwardCmWithGyro(speed=800, distance=-25.5, angle=90)
-        self.robot.egyenesedes(speed=400, angle=90)
-        self.robot.forwardCmWithGyro(speed=800, distance=20, angle=90)
+        self.robot.egyenesedes(speed=-300, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=90)
         self.robot.turnToGyroAngle(speed=200, angle=0)
         # felveszi az 1*3 kockát
 
@@ -162,8 +164,8 @@ class Task:
         self.grabber.on_to_position(speed=100, position=0)
         self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
         self.grabber.on_to_position(speed=100, position=110)
-        # self.grabber.on_to_position(speed=100, position=0)
-        # self.grabber.on_to_position(speed=100, position=110)
+        self.grabber.on_to_position(speed=100, position=0)
+        self.grabber.on_to_position(speed=100, position=110)
         self.robot.turnToGyroAngle(speed=200, angle=90)
         # elviszi a kockákat
         self.robot.forwardCmWithGyro(speed=800, distance=10, angle=90)
