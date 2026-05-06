@@ -89,7 +89,7 @@ class Task:
         # 90 fokra fordul a mozaik előtt, majd beviszi a 1*3 kockát
         self.robot.turnToGyroAngle(speed=200, angle=90)
         # self.robot.buttonPress()
-        self.robot.forwardCmWithGyro(speed=500, distance=29.5, angle=90)
+        self.robot.forwardCmWithGyro(speed=500, distance=29, angle=90)
         self.grabber.stop()
         self.grabber.on_to_position(speed=100, position=0)
         sleep(0.3)
