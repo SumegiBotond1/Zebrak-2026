@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-
 # pyright: reportOptionalMemberAccess=false
 # pyright: reportMissingImports=false
-# tesztnkgfew randint weftg
+
 from ev3dev2.motor import MediumMotor, Motor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D,  SpeedPercent, MoveTank
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor, InfraredSensor, UltrasonicSensor
@@ -17,9 +16,11 @@ from task import Task
 from time import time, sleep
 import ev3dev2.fonts as fonts
 import sys
+
 button = Button()
 leds = Leds()
 sound = Sound()
+
 def error(e):
     sound.speak("ERROR")
     leds.set_color('LEFT', 'RED')
