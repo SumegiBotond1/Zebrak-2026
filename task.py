@@ -67,9 +67,8 @@ class Task:
         self.grabber.on_to_position(speed=40, position=0)
         self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
         self.grabber.on_to_position(speed=100, position=110)
-        sleep(0.1)
-        self.grabber.on_to_position(speed=100, position=0)
-        self.grabber.on_to_position(speed=100, position=110)
+        # self.grabber.on_to_position(speed=100, position=0)
+        # self.grabber.on_to_position(speed=100, position=110)
         # elviszi a kockákat a helyére
         self.robot.turnToGyroAngle(speed=200, angle=90)
         self.robot.forwardCmWithGyro(speed=800, distance=43, angle=90)
@@ -92,7 +91,6 @@ class Task:
         self.robot.forwardCmWithGyro(speed=500, distance=29, angle=90)
         self.grabber.stop()
         self.grabber.on_to_position(speed=100, position=0)
-        sleep(0.3)
         # hárta megy a fekete vonalig
         self.robot.forwardCmWithGyro(speed=500, distance=-65, angle=90)
         self.robot.alignToBlack(speed=-200)
@@ -115,9 +113,8 @@ class Task:
         self.grabber.on_to_position(speed=100, position=0)
         self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
         self.grabber.on_to_position(speed=100, position=110)
-        sleep(0.1)
-        self.grabber.on_to_position(speed=100, position=0)
-        self.grabber.on_to_position(speed=100, position=110)
+        # self.grabber.on_to_position(speed=100, position=0)
+        # self.grabber.on_to_position(speed=100, position=110)
         self.robot.turnToGyroAngle(speed=200, angle=90)
         # elviszi a kockákat
         self.robot.forwardCmWithGyro(speed=800, distance=41, angle=90)
@@ -138,10 +135,8 @@ class Task:
         # beviszi a 2. 1*3 kockát
         self.robot.forwardCmWithGyro(speed=800, distance=22, angle=90)
         self.grabber.stop()
-        self.emelo.on_to_position(speed=100, position=100)
+        self.emelo.on_to_position(speed=100, position=300)
         self.grabber.on_to_position(speed=100, position=0)
-        self.emelo.on_to_position(speed=100, position=500)
-        sleep(0.3)
         self.robot.forwardCmWithGyro(speed=800, distance=-60, angle=90)
         self.robot.alignToBlack(speed=-200)
         self.e_g_nulla()
