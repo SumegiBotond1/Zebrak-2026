@@ -2,7 +2,7 @@
 
 # pyright: reportOptionalMemberAccess=false
 # pyright: reportMissingImports=false
-# teszt
+# tesztnkgfew
 from ev3dev2.motor import MediumMotor, Motor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D,  SpeedPercent, MoveTank
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor, InfraredSensor, UltrasonicSensor
