@@ -22,7 +22,7 @@ leds = Leds()
 sound = Sound()
 
 def error(e):
-    sound.speak("ERROR")
+    # sound.speak("ERROR")
     leds.set_color('LEFT', 'RED')
     leds.set_color('RIGHT', 'RED')
     while not button.enter:
@@ -70,8 +70,8 @@ try:
         leds.set_color('RIGHT', 'AMBER')
         start_time = time()
         task.rohadjmeg()
-        task.masodik()
-        task.harmadik()
+        # task.masodik()
+        # task.harmadik()
         robot.log("Time: {:.4f}s".format((time() - start_time)))
     except Exception as f:
         robot.log(f)

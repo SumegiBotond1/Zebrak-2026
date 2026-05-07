@@ -49,11 +49,67 @@ class Task:
         self.emelo.on_for_degrees(speed=100, degrees=300, block=True)
         self.e_g_nulla()
 
-
-
+    def felvesz(self):
+        self.grabber.on_to_position(speed=100, position=150)
+        self.grabber.on_to_position(speed=100, position=0)
+        self.grabber.on_to_position(speed=100, position=150)
 
 
     def rohadjmeg(self):
+        self.grabber.stop_action = 'hold'
+        self.emelo.stop_action = 'hold'
+        self.grabber.position = 0
+        self.emelo.position = 0
+
+        # előre megy a 1. 3 kockához és megfogja
+        self.robot.forwardCmWithGyro(speed=800, distance=12, angle=0)
+        self.grabber.on_to_position(speed=40, position=100, block=True)
+        # megfogja a kockákat a belsejébe
+        self.robot.forwardCmWithGyro(speed=800, distance=-19, angle=0)
+        self.grabber.on_to_position(speed=40, position=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
+        self.felvesz()
+        # elviszi a kockákat a helyére
+        self.emelo.on_to_position(speed=45, position=250)
+        self.robot.forwardCmWithGyro(speed=800, distance=12, angle=0)
+        self.emelo.on_to_position(speed=45, position=-10)
+        self.robot.buttonPress()
+        self.robot.forwardCmWithGyro(speed=800, distance=-12, angle=0)
+        self.robot.turnToGyroAngle(speed=300, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=43, angle=90)
+        self.robot.turnToGyroAngle(speed=300, angle=0)
+        # feketere egyenesedes 0 fokon
+        self.robot.alignToBlack(speed=400, blackThreshold=7)
+        self.robot.forwardCmWithGyro(speed=800, distance=38, angle=0)
+        # feketere egyenesedes 0 fokon
+        self.robot.alignToBlack(speed=300, blackThreshold=7)
+        self.robot.forwardCmWithGyro(speed=800, distance=4, angle=0)
+        # elfordul a mozaik felé
+        self.robot.turnToGyroAngle(speed=300, angle=270)
+        self.emelo.on_to_position(speed=45, position=300)
+        self.robot.forwardCmWithGyro(speed=800, distance=-10, angle=270)
+        self.robot.turnToGyroAngle(speed=300, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=90)
+        self.robot.alignToBlack(speed=200, blackThreshold=7)
+        self.robot.turnToGyroAngle(speed=200, angle=270)
+        # 90 fokra fordul a mozaik előtt, majd beviszi a 1*3 kockát
+        self.robot.turnToGyroAngle(speed=200, angle=90)
+        # self.robot.buttonPress()
+        self.robot.forwardCmWithGyro(speed=500, distance=29, angle=90)
+        self.emelo.on_to_position(speed=100, position=10)
+        self.grabber.stop()
+        self.grabber.on_to_position(speed=100, position=40, block=False)
+        # hárta megy a fekete vonalig
+        self.robot.forwardCmWithGyro(speed=500, distance=-65, angle=90)
+        self.robot.alignToBlack(speed=-200, blackThreshold=7)
+        self.e_g_nulla()
+
+
+
+
+
+
+    def rohadjmeg1(self):
         self.grabber.stop_action = 'hold'
         self.emelo.stop_action = 'hold'
         self.grabber.position = 0
@@ -95,6 +151,7 @@ class Task:
         self.robot.forwardCmWithGyro(speed=500, distance=-65, angle=90)
         self.robot.alignToBlack(speed=-200, blackThreshold=7)
         self.e_g_nulla()
+
 
     def masodik(self):
         # elmegy a 2. 1*3 kockáért
