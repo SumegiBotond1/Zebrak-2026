@@ -69,10 +69,10 @@ try:
         robot.starting()
         leds.set_color('LEFT', 'AMBER')
         leds.set_color('RIGHT', 'AMBER')
-        self.grabber.stop_action = 'hold'
-        self.emelo.stop_action = 'hold'
-        self.grabber.position = 0
-        self.emelo.position = 0
+        task.grabber.stop_action = 'hold'
+        task.emelo.stop_action = 'hold'
+        task.grabber.position = 0
+        task.emelo.position = 0
         start_time = time()
         # task.rohadjmeg()
         task.masodik()
