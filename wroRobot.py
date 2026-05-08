@@ -240,6 +240,7 @@ class WroRobot:
         self.left_motor.wait_until_not_moving()
         self.right_motor.wait_until_not_moving()
         if angle != None:
+            print("HIHI", file=sys.stderr)
             # self.log("Angle before correction: {}".format(self.gyroSensor.angle))
             self.setGyroCorrection(angle)
             # self.log("Angle after correction: {}".format((self.gyroSensor.angle-self.gyroCorrection)))

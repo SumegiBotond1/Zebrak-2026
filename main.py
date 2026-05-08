@@ -63,15 +63,19 @@ try:
     # robot.calibrate()
     task = Task(robot)
     try:
+
         leds.set_color('LEFT', 'AMBER')
         leds.set_color('RIGHT', 'AMBER')
         robot.starting()
         leds.set_color('LEFT', 'AMBER')
         leds.set_color('RIGHT', 'AMBER')
+        self.grabber.stop_action = 'hold'
+        self.emelo.stop_action = 'hold'
+        self.grabber.position = 0
+        self.emelo.position = 0
         start_time = time()
-        task.rohadjmeg()
+        # task.rohadjmeg()
         task.masodik()
-        # task.harmadik()
         robot.log("Time: {:.4f}s".format((time() - start_time)))
     except Exception as f:
         robot.log(f)
