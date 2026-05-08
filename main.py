@@ -70,7 +70,7 @@ try:
         leds.set_color('RIGHT', 'AMBER')
         start_time = time()
         task.rohadjmeg()
-        # task.masodik()
+        task.masodik()
         # task.harmadik()
         robot.log("Time: {:.4f}s".format((time() - start_time)))
     except Exception as f:

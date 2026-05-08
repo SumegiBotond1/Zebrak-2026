@@ -71,9 +71,9 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
         self.felvesz()
         # elviszi a kockákat a helyére
-        self.emelo.on_to_position(speed=45, position=250)
+        self.emelo.on_to_position(speed=80, position=250)
         self.robot.forwardCmWithGyro(speed=800, distance=12, angle=0)
-        self.emelo.on_to_position(speed=45, position=-10)
+        self.emelo.on_to_position(speed=80, position=-10)
         # self.robot.buttonPress()
         self.robot.forwardCmWithGyro(speed=800, distance=-12, angle=0)
         self.robot.turnToGyroAngle(speed=300, angle=90)
@@ -87,7 +87,7 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=4, angle=0)
         # elfordul a mozaik felé
         self.robot.turnToGyroAngle(speed=300, angle=-90)
-        self.emelo.on_to_position(speed=45, position=300)
+        self.emelo.on_to_position(speed=80, position=300)
         self.robot.forwardCmWithGyro(speed=800, distance=-7, angle=270)
         self.robot.turnToGyroAngle(speed=300, angle=90)
         self.robot.forwardCmWithGyro(speed=800, distance=13, angle=90)
@@ -108,7 +108,7 @@ class Task:
         self.robot.turnToGyroAngle(speed=300, angle=90)
         self.robot.forwardCmWithGyro(speed=800, distance=20, angle=90)
         self.robot.alignToBlack(speed=200, blackThreshold=7)
-        self.emelo.on_to_position(speed=45, position=500)
+        self.emelo.on_to_position(speed=80, position=500)
 
         self.robot.forwardCmWithGyro(speed=800, distance=22, angle=90)
         self.grabber.stop()
@@ -117,6 +117,67 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=-60, angle=90)
         self.robot.alignToBlack(speed=-200, blackThreshold=7)
         self.e_g_nulla()
+
+    def masodik(self):
+        self.robot.turnToGyroAngle(speed=200, angle=180)
+        self.robot.forwardCmWithGyro(speed=800, distance=32, angle=180)
+        self.robot.alignToBlack(speed=200, blackThreshold=7)
+        self.robot.forwardCmWithGyro(speed=800, distance=4, angle=180)
+        self.robot.turnToGyroAngle(speed=200, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=-26.5, angle=90)
+        self.robot.egyenesedes(speed=-300, angle=90, seconds=1.5)
+        self.robot.forwardCmWithGyro(speed=800, distance=12, angle=90)
+        self.robot.turnToGyroAngle(speed=200, angle=0)
+        self.robot.egyenesedes(speed=-300, angle=0, seconds=1.5)
+        
+        self.robot.forwardCmWithGyro(speed=800, distance=50, angle=0)
+        self.grabber.on_to_position(speed=100, position=100)
+        self.robot.forwardCmWithGyro(speed=800, distance=-19, angle=0)
+        self.grabber.on_to_position(speed=100, position=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=9, angle=0)
+        self.felvesz()
+        self.emelo.on_to_position(speed=80, position=250)
+        self.robot.forwardCmWithGyro(speed=800, distance=12, angle=0)
+        self.emelo.on_to_position(speed=80, position=-10)
+        self.robot.forwardCmWithGyro(speed=800, distance=-12, angle=0)
+        self.robot.turnToGyroAngle(speed=300, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=43, angle=90)
+        self.robot.turnToGyroAngle(speed=300, angle=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=0)
+        self.robot.alignToBlack(speed=400, blackThreshold=7)
+        self.robot.forwardCmWithGyro(speed=800, distance=4, angle=0)
+        self.robot.turnToGyroAngle(speed=300, angle=-90)
+        self.emelo.on_to_position(speed=80, position=500)
+        self.robot.forwardCmWithGyro(speed=800, distance=-7, angle=270)
+        self.robot.turnToGyroAngle(speed=300, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=13, angle=90)
+        self.robot.alignToBlack(speed=200, blackThreshold=7)
+        self.robot.forwardCmWithGyro(speed=500, distance=10, angle=90)
+        self.emelo.on_to_position(speed=80, position=300)
+        self.grabber.on_to_position(speed=40, position=0)
+        self.robot.forwardCmWithGyro(speed=500, distance=-17, angle=90)
+        self.robot.turnToGyroAngle(speed=300, angle=270)
+        self.emelo.on_to_position(speed=100, position=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=5, angle=270)
+        self.robot.felvesz()
+        self.emelo.on_to_position(speed=80, position=500)
+        self.robot.turnToGyroAngle(speed=300, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=20, angle=90)
+        self.robot.alignToBlack(speed=200, blackThreshold=7)
+        self.robot.forwardCmWithGyro(speed=800, distance=2, angle=90)
+        self.emelo.on_to_position(speed=100, position=300)
+        self.grabber.on_to_position(speed=100, position=0)
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -152,7 +213,7 @@ class Task:
         # elfordul a mozaik felé
         self.robot.turnToGyroAngle(speed=300, angle=90)
         self.grabber.on_to_position(speed=100, position=300, block=True)
-        self.emelo.on_to_position(speed=45, position=250)
+        self.emelo.on_to_position(speed=100, position=250)
         self.robot.forwardCmWithGyro(speed=800, distance=20, angle=90)
         self.robot.alignToBlack(speed=200, blackThreshold=7)
         # 90 fokra fordul a mozaik előtt, majd beviszi a 1*3 kockát
@@ -167,7 +228,7 @@ class Task:
         self.e_g_nulla()
 
 
-    def masodik(self):
+    def masodik1(self):
         # elmegy a 2. 1*3 kockáért
         self.robot.turnToGyroAngle(speed=200, angle=180)
         self.robot.forwardCmWithGyro(speed=800, distance=32, angle=180)
