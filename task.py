@@ -150,7 +150,8 @@ class Task:
         self.robot.egyenesedes(speed=-300, seconds=1.5)
         self.robot.forwardCmWithGyro(speed=800, distance=12, angle=90)
         self.robot.turnToGyroAngle(speed=200, angle=0)
-        self.robot.egyenesedes(speed=-400, angle=0, seconds=2)
+        self.robot.forwardCmWithGyro(speed=800, distance=-6, angle=0)
+        self.robot.egyenesedes(speed=-300, angle=0, seconds=1.5)
         self.robot.writeGyroAngle()
 
         # elmegy felvelnni a 3.,4. 1*3 kockát
