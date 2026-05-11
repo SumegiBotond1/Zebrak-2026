@@ -60,7 +60,7 @@ class Task:
 
 
         # előre megy a 1. 3 kockához és megfogja
-        self.robot.forwardCmWithGyro(speed=800, distance=12, angle=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=10.8, angle=0)
         self.grabber.on_to_position(speed=40, position=120, block=True)
         # megfogja a kockákat a belsejébe
         self.robot.forwardCmWithGyro(speed=800, distance=-19, angle=0)

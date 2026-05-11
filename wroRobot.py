@@ -205,30 +205,22 @@ class WroRobot:
         if stop:
             self.stop()
 
-    def TurnXAngle(self, speed, angle, left_speed=None, right_speed=None):
+    def TurnXAngle(self, speed, angle):
         current = self.gyroSensor.angle - self.gyroCorrection
         target = current + angle
-        self.turnToGyroAngle(angle=target, left_speed=left_speed, right_speed=right_speed, speed=speed)
+        self.turnToGyroAngle(angle=target, speed=speed)
 
-    def turnToGyroAngle(self, angle, left_speed=None, right_speed=None, speed=200):
-        if left_speed is None and right_speed is None:
-            left_speed = speed
-            right_speed = speed
-        else:
-            if left_speed is None:
-                left_speed = 0
-            if right_speed is None:
-                right_speed = 0
+    def turnToGyroAngle(self, angle, speed=200):
         current = self.gyroSensor.angle - self.gyroCorrection
         
         if current < angle:
-            self.right_motor.run_forever(speed_sp=-abs(right_speed))
-            self.left_motor.run_forever(speed_sp= abs(left_speed))
+            self.right_motor.run_forever(speed_sp=-abs(speed))
+            self.left_motor.run_forever(speed_sp= abs(speed))
             while self.gyroSensor.angle - self.gyroCorrection < (angle - 2):
                 pass
         else:
-            self.right_motor.run_forever(speed_sp=abs(right_speed))
-            self.left_motor.run_forever(speed_sp=-abs(left_speed))
+            self.right_motor.run_forever(speed_sp=abs(speed))
+            self.left_motor.run_forever(speed_sp=-abs(speed))
             while self.gyroSensor.angle - self.gyroCorrection > (angle + 2):
                 pass
         self.stop()
