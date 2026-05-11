@@ -74,7 +74,6 @@ try:
         task.grabber.position = 0
         task.emelo.position = 0
         start_time = time()
-        robot.log(start_time)
         task.rohadjmeg()
         task.masodik()
         robot.log("Time: {:.4f}s".format((time() - start_time)))
