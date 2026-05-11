@@ -296,7 +296,7 @@ class WroRobot:
     def writeGyroAngle(self, nev = None):
         if nev == None:
             nev = "Angle"
-        self.log("Angle: {}".format((self.gyroSensor.angle-self.gyroCorrection)))
+        self.log("Angle: {}\n\tGyrocorrection: {}".format((self.gyroSensor.angle-self.gyroCorrection), self.gyroCorrection))
         self.gyroadatok.write("{}: {}\n".format(nev, self.gyroSensor.angle))
         self.gyroadatok.flush()
 

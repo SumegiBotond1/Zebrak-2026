@@ -151,6 +151,7 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=12, angle=90)
         self.robot.turnToGyroAngle(speed=200, angle=0)
         self.robot.egyenesedes(speed=-400, angle=0, seconds=2)
+        self.robot.writeGyroAngle()
 
         # elmegy felvelnni a 3.,4. 1*3 kockát
         self.robot.forwardCmWithGyro(speed=800, distance=35, angle=0)
@@ -162,12 +163,12 @@ class Task:
         self.felvesz()
 
         self.emelo.on_to_position(speed=80, position=250)
-        self.robot.writeGyroAngle()
-        self.robot.forwardCmWithGyro(speed=800, distance=20, angle=0.1)
+        # self.robot.writeGyroAngle()
+        self.robot.forwardCmWithGyro(speed=800, distance=17.5, angle=0.1)
 
-        self.robot.writeGyroAngle()
+        # self.robot.writeGyroAngle()
         self.emelo.on_to_position(speed=80, position=-10)
-        self.robot.forwardCmWithGyro(speed=800, distance=-20, angle=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=-17.5, angle=0)
 
 
         # elviszi a 3.,4. 1*3 kocká
@@ -184,8 +185,8 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=4, angle=0)
 
         # lerakja a 4. 1*3 kockát
-        self.robot.turnToGyroAngle(speed=300, angle=-90)
-        self.robot.forwardCmWithGyro(speed=800, distance=-11, angle=-90)
+        self.robot.turnToGyroAngle(speed=300, angle=-89)
+        self.robot.forwardCmWithGyro(speed=800, distance=-11, angle=-89)
         self.emelo.on_to_position(speed=80, position=500)
 
         self.robot.turnToGyroAngle(speed=300, angle=90)
@@ -200,11 +201,11 @@ class Task:
         self.robot.turnToGyroAngle(speed=300, angle=-90)
         self.emelo.on_to_position(speed=100, position=0)
         self.robot.forwardCmWithGyro(speed=600, distance=20, angle=-90)
-        self.robot.forwardCmWithGyro(speed=600, distance=7, angle=-92)
+        self.robot.forwardCmWithGyro(speed=600, distance=7, angle=-93)
         self.robot.buttonPress()
         # self.robot.alignToBlack(speed=200, blackThreshold=10)
         self.felvesz()
-        self.robot.buttonPress()
+        # self.robot.buttonPress()
         # self.robot.alignToBlack(speed=-200, blackThreshold=7)
 
         self.robot.forwardCmWithGyro(speed=600, distance=-4, angle=-90)
