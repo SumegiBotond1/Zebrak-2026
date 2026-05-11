@@ -246,20 +246,27 @@ class WroRobot:
             # self.log("Angle after correction: {}".format((self.gyroSensor.angle-self.gyroCorrection)))
             # self.log("\tGyrocorrection set to: {}".format(self.gyroCorrection))
 
-    def alignToBlackWithSide(self, speed, blackThreshold = None):
+    def alignToBlackWithSide(self, speed, blackThreshold = None, side="right"):
         self.left_motor.run_forever(speed_sp = speed)            
         self.right_motor.run_forever(speed_sp = speed)            
         while (self.left_motor.is_running or self.right_motor.is_running):
-            if (self.leftColorSensor.isBlackReflection(blackThreshold) or (self.rightColorSensor.isBlackReflection(blackThreshold))):
-                self.left_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
-                self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
+            if side == "right":
+                if (self.rightColorSensor.isBlackReflection(blackThreshold)):
+                    self.left_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
+                    self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
+            elif side == "left":
+                if (self.leftColorSensor.isBlackReflection(blackThreshold)):
+                    self.left_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
+                    self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
         self.stop()
 
     def setGyroCorrection(self, angle):
         CurrentAngle = self.gyroSensor.angle
         self.gyroCorrection = CurrentAngle - angle
 
-
+    def IsNearGyroAngle(self, angle, threshold = 2):
+        if (self.gyroSensor.angle-self.gyroCorrection) < -abs(threshold) or (self.gyroSensor.angle-self.gyroCorrection) > abs(threshold):
+            self.turnToGyroAngle(speed=300, angle=angle)
 
 
 

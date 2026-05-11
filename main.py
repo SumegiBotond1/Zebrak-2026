@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # pyright: reportOptionalMemberAccess=false
 # pyright: reportMissingImports=false
-# am
+
 from ev3dev2.motor import MediumMotor, Motor, OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D,  SpeedPercent, MoveTank
 from ev3dev2.sensor import INPUT_1, INPUT_2, INPUT_3, INPUT_4
 from ev3dev2.sensor.lego import ColorSensor, GyroSensor, InfraredSensor, UltrasonicSensor
@@ -74,7 +74,7 @@ try:
         task.grabber.position = 0
         task.emelo.position = 0
         start_time = time()
-        # task.rohadjmeg()
+        task.rohadjmeg()
         task.masodik()
         robot.log("Time: {:.4f}s".format((time() - start_time)))
     except Exception as f:
