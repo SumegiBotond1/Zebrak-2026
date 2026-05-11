@@ -164,11 +164,11 @@ class Task:
 
         self.emelo.on_to_position(speed=80, position=250)
         # self.robot.writeGyroAngle()
-        self.robot.forwardCmWithGyro(speed=800, distance=17.5, angle=0.1)
+        self.robot.forwardCmWithGyro(speed=800, distance=16.8, angle=0.1)
 
         # self.robot.writeGyroAngle()
         self.emelo.on_to_position(speed=80, position=-10)
-        self.robot.forwardCmWithGyro(speed=800, distance=-17.5, angle=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=-16.8, angle=0)
 
 
         # elviszi a 3.,4. 1*3 kocká
@@ -200,8 +200,8 @@ class Task:
         self.robot.forwardCmWithGyro(speed=500, distance=-17, angle=90)
         self.robot.turnToGyroAngle(speed=300, angle=-90)
         self.emelo.on_to_position(speed=100, position=0)
-        self.robot.forwardCmWithGyro(speed=600, distance=20, angle=-90)
-        self.robot.forwardCmWithGyro(speed=600, distance=7, angle=-93)
+        self.robot.forwardCmWithGyro(speed=600, distance=25, angle=-90)
+        self.robot.alignToBlack(speed=200, blackThreshold=14)
         self.robot.buttonPress()
         # self.robot.alignToBlack(speed=200, blackThreshold=10)
         self.felvesz()
@@ -211,8 +211,8 @@ class Task:
         self.robot.forwardCmWithGyro(speed=600, distance=-4, angle=-90)
         self.emelo.on_to_position(speed=80, position=500)
         self.robot.turnToGyroAngle(speed=300, angle=90)
-        self.robot.forwardCmWithGyro(speed=600, distance=25, angle=90)
-        self.robot.alignToBlack(speed=200, blackThreshold=7)
+        self.robot.forwardCmWithGyro(speed=600, distance=21, angle=90)
+        self.robot.alignToBlack(speed=200, blackThreshold=18.5)
         self.robot.forwardCmWithGyro(speed=600, distance=12, angle=90)
         self.emelo.on_to_position(speed=100, position=300)
         self.grabber.on_to_position(speed=100, position=0)
