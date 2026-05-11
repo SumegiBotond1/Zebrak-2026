@@ -264,9 +264,7 @@ class WroRobot:
         CurrentAngle = self.gyroSensor.angle
         self.gyroCorrection = CurrentAngle - angle
 
-    def IsNearGyroAngle(self, angle, threshold = 2):
-        if (self.gyroSensor.angle-self.gyroCorrection) < -abs(threshold) or (self.gyroSensor.angle-self.gyroCorrection) > abs(threshold):
-            self.turnToGyroAngle(speed=300, angle=angle)
+
 
 
 
