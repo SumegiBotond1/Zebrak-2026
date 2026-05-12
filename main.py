@@ -75,7 +75,7 @@ try:
         task.emelo.position = 0
         robot.writeGyroAngle()
         start_time = time()
-        # task.rohadjmeg()
+        task.rohadjmeg()
         task.masodik()
         robot.log("Time: {:.4f}s".format((time() - start_time)))
     except Exception as f:

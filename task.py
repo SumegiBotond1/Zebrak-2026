@@ -152,10 +152,10 @@ class Task:
         self.robot.writeGyroAngle()
 
         # elmegy felvelnni a 3.,4. 1*3 kockát
-        self.log("1")
+        # self.log("1")
         self.robot.forwardCmWithGyro(speed=800, distance=33.5, angle=0)
         self.grabber.on_to_position(speed=100, position=100)
-        self.log("2")
+        # self.log("2")
         # self.robot.buttonPress()
         self.robot.forwardCmWithGyro(speed=800, distance=-19, angle=0)
         self.grabber.on_to_position(speed=100, position=0)
