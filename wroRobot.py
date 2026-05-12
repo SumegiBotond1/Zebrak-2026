@@ -41,7 +41,6 @@ class WroRobot:
             gyro = GyroSensor(gyroSensorPort)
             gyro.calibrate()
             gyro.reset()
-            time.sleep(0.1)
 
             self.gyroSensor = ev3fast.GyroSensor(address = gyroSensorPort)
             # self.gyroSensor.calibrate()
