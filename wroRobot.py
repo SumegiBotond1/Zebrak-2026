@@ -39,10 +39,6 @@ class WroRobot:
 
         if (gyroSensorPort != None):
             gyro = GyroSensor(gyroSensorPort)
-            gyro.mode = 'GYRO-RATE'
-            time.sleep(0.5)
-            gyro.mode = 'GYRO-ANG'
-            time.sleep(0.5)
             gyro.calibrate()
             gyro.reset()
             time.sleep(0.1)
