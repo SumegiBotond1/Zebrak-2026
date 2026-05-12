@@ -99,7 +99,7 @@ class Task:
         self.robot.alignToBlack(speed=200, blackThreshold=18.5)
 
         # self.robot.buttonPress()
-        self.robot.forwardCmWithGyro(speed=500, distance=26.2, angle=90)
+        self.robot.forwardCmWithGyro(speed=500, distance=27, angle=90)
         self.emelo.on_to_position(speed=100, position=60)
         self.grabber.stop()
         self.grabber.on_to_position(speed=40, position=0)
@@ -123,7 +123,7 @@ class Task:
         self.robot.alignToBlack(speed=200, blackThreshold=18.5)
         self.emelo.on_to_position(speed=80, position=500)
 
-        self.robot.forwardCmWithGyro(speed=800, distance=22, angle=89)
+        self.robot.forwardCmWithGyro(speed=800, distance=23.7, angle=89)
         self.grabber.stop()
         self.emelo.on_to_position(speed=100, position=400)
         self.grabber.on_to_position(speed=100, position=0)
@@ -195,7 +195,7 @@ class Task:
         # beviszi a 3. 1*3 kockát
         self.robot.forwardCmWithGyro(speed=600, distance=13, angle=90)
         self.robot.alignToBlack(speed=200, blackThreshold=18.5)
-        self.robot.forwardCmWithGyro(speed=500, distance=18.5, angle=90)
+        self.robot.forwardCmWithGyro(speed=500, distance=19, angle=90)
         self.emelo.on_to_position(speed=80, position=400)
         self.grabber.on_to_position(speed=40, position=0)
         self.robot.forwardCmWithGyro(speed=500, distance=-17, angle=90)
@@ -211,10 +211,10 @@ class Task:
         self.robot.turnToGyroAngle(speed=300, angle=90)
         self.robot.forwardCmWithGyro(speed=600, distance=34, angle=89.5)
         self.robot.alignToBlack(speed=200, blackThreshold=18.5)
-        self.robot.forwardCmWithGyro(speed=600, distance=9, angle=89.5)
+        self.robot.forwardCmWithGyro(speed=600, distance=10.5, angle=89.5)
         self.emelo.on_to_position(speed=100, position=400)
         self.grabber.on_to_position(speed=100, position=0)
-        self.roboto.forwardCmWithGyro(speed=800, distance=-40, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=-40, angle=90)
         self.robot.alignToBlack(speed=-300, blackThreshold=10)
         self.e_g_nulla()
 
