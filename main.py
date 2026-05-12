@@ -58,56 +58,32 @@ def error(e):
     f.close()
 
 
-robot = WroRobot()
-# robot.calibrate()
-task = Task(robot)
-leds.set_color('LEFT', 'AMBER')
-leds.set_color('RIGHT', 'AMBER')
-robot.starting()
-leds.set_color('LEFT', 'AMBER')
-leds.set_color('RIGHT', 'AMBER')
-task.grabber.stop_action = 'hold'
-task.emelo.stop_action = 'hold'
-task.grabber.position = 0
-task.emelo.position = 0
-robot.writeGyroAngle()
-start_time = time()
-task.rohadjmeg()
-task.masodik()
-robot.log("Time: {:.4f}s".format((time() - start_time)))
+try:
+    robot = WroRobot()
+    # robot.calibrate()
+    task = Task(robot)
+    try:
 
-
-
-
-
-
-# try:
-#     robot = WroRobot()
-#     # robot.calibrate()
-#     task = Task(robot)
-#     try:
-
-#         leds.set_color('LEFT', 'AMBER')
-#         leds.set_color('RIGHT', 'AMBER')
-#         robot.starting()
-#         leds.set_color('LEFT', 'AMBER')
-#         leds.set_color('RIGHT', 'AMBER')
-#         task.grabber.stop_action = 'hold'
-#         task.emelo.stop_action = 'hold'
-#         task.grabber.position = 0
-#         task.emelo.position = 0
-#         robot.writeGyroAngle()
-#         start_time = time()
-#         task.rohadjmeg()
-#         task.masodik()
-#         robot.log("Time: {:.4f}s".format((time() - start_time)))
-#     except Exception as f:
-#         robot.log(f)
-#     finally:
-#         robot.stop()
-#         robot.gyroadatok.close()
-#         exit()
-# except Exception as e:
-#     print("Error: {}".format(e), file=sys.stderr)
-#     error(e)
-
+        leds.set_color('LEFT', 'AMBER')
+        leds.set_color('RIGHT', 'AMBER')
+        robot.starting()
+        leds.set_color('LEFT', 'AMBER')
+        leds.set_color('RIGHT', 'AMBER')
+        task.grabber.stop_action = 'hold'
+        task.emelo.stop_action = 'hold'
+        task.grabber.position = 0
+        task.emelo.position = 0
+        robot.writeGyroAngle()
+        start_time = time()
+        # task.rohadjmeg()
+        task.masodik()
+        robot.log("Time: {:.4f}s".format((time() - start_time)))
+    except Exception as f:
+        robot.log(f)
+    finally:
+        robot.stop()
+        robot.gyroadatok.close()
+        exit()
+except Exception as e:
+    print("Error: {}".format(e), file=sys.stderr)
+    error(e)
