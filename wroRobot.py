@@ -232,7 +232,7 @@ class WroRobot:
         if angle != None:
             print("HIHI", file=sys.stderr)
             # self.log("Angle before correction: {}".format(self.gyroSensor.angle))
-            time.sleep(0.5)
+            time.sleep(0.01)
             self.setGyroCorrection(angle)
             # self.log("Angle after correction: {}".format((self.gyroSensor.angle-self.gyroCorrection)))
             # self.log("\tGyrocorrection set to: {}".format(self.gyroCorrection))
