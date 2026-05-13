@@ -147,7 +147,8 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=12, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=0)
         self.robot.forwardCmWithGyro(speed=800, distance=-6, angle=0)
-        self.robot.egyenesedes(angle=0, speed=-300, seconds=1.5)
+        # self.robot.egyenesedes(angle=0, speed=-300, seconds=1.5)
+        self.robot.egyenesedes(speed=-300, seconds=1.5)
 
         # elmegy felvelnni a 3.,4. 1*3 kockát
         # self.log("1")
@@ -241,10 +242,11 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=32, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=135)
         self.robot.forwardCmWithGyro(speed=800, distance=10, angle=135)
+        self.grabber.on_to_position(speed=100, position=120, block=True)
         self.robot.turnToGyroAngle(speed=400, angle=90)
-        self.robot.forwardCmWithGyro(speed=800, distance=5, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=6, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=45)
-        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=45)
+        self.robot.forwardCmWithGyro(speed=800, distance=20, angle=45)
         self.robot.turnToGyroAngle(speed=400, angle=90)
         self.robot.forwardCmWithGyro(speed=800, distance=25, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=0)
