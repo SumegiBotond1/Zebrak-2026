@@ -89,8 +89,7 @@ class Task:
         self.robot.forwardCmWithGyro(speed=800, distance=4, angle=0)
         # elfordul, hogy lerakja a 2. 3 kockát
         self.robot.turnToGyroAngle(speed=300, angle=-90)
-        self.robot.forwardCmWithGyro(speed=800, distance=5, angle=-90)
-        self.robot.forwardCmWithGyro(speed=800, distance=-12, angle=-90)
+        self.robot.forwardCmWithGyro(speed=800, distance=-7, angle=-90)
         self.emelo.on_to_position(speed=80, position=400)
         # self.robot.forwardCmWithGyro(speed=800, distance=-14, angle=-90)
         # beviszi a 1. 3 kockát
@@ -153,7 +152,7 @@ class Task:
 
         # elmegy felvelnni a 3.,4. 1*3 kockát
         # self.log("1")
-        self.robot.forwardCmWithGyro(speed=800, distance=33.5, angle=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=33.5, angle=0.123)
         self.grabber.on_to_position(speed=100, position=100)
         # self.log("2")
         # self.robot.buttonPress()
