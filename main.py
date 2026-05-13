@@ -77,6 +77,7 @@ try:
         start_time = time()
         task.rohadjmeg()
         task.masodik()
+        task.ni()
         robot.log("Time: {:.4f}s".format((time() - start_time)))
     except Exception as f:
         robot.log(f)
