@@ -136,7 +136,7 @@ class Task:
 
     def masodik(self):
         # elmegy a 3.,4. 1*3 kockáért
-        self.robot.turnToGyroAngle(speed=40, angle=180)
+        self.robot.turnToGyroAngle(speed=400, angle=180)
         self.robot.forwardCmWithGyro(speed=800, distance=28, angle=180)
         self.robot.alignToBlack(speed=400, blackThreshold=7)
         self.robot.forwardCmWithGyro(speed=800, distance=10, angle=180)
@@ -229,28 +229,28 @@ class Task:
         while (self.robot.gyroSensor.angle-self.robot.gyroCorrection) < 90:
             pass
         self.robot.stop()
-        self.robot.forwardCmWithGyro(speed=800, distance=13, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=14, angle=90)
         self.grabber.on_to_position(speed=100, position=100, block=True)
-        self.robot.forwardCmWithGyro(speed=800, distance=-20, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=-30, angle=90)
         self.robot.log("Time after first tool: {:.4f}s".format((time() - self.start_time)))
-        self.e_g_nulla()
+        self.grabber.on_to_position(speed=70, position=0, block=True)
         sleep(0.1)
         self.robot.forwardCmWithGyro(speed=800, distance=-10, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=45)
         self.robot.forwardCmWithGyro(speed=800, distance=10, angle=45)
         self.robot.turnToGyroAngle(speed=400, angle=90)
-        self.robot.forwardCmWithGyro(speed=800, distance=32, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=40, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=135)
         self.robot.forwardCmWithGyro(speed=800, distance=10, angle=135)
-        self.grabber.on_to_position(speed=100, position=120, block=True)
         self.robot.turnToGyroAngle(speed=400, angle=90)
-        self.robot.forwardCmWithGyro(speed=800, distance=6, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=90)
+        # self.grabber.on_to_position(speed=100, position=120, block=True)
         self.robot.turnToGyroAngle(speed=400, angle=45)
-        self.robot.forwardCmWithGyro(speed=800, distance=20, angle=45)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=45)
         self.robot.turnToGyroAngle(speed=400, angle=90)
-        self.robot.forwardCmWithGyro(speed=800, distance=25, angle=90)
+        self.robot.forwardCmWithGyro(speed=800, distance=35, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=0)
-        self.robot.forwardCmWithGyro(speed=800, distance=20, angle=0)
+        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=0)
 
 
 
