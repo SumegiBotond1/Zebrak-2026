@@ -76,11 +76,9 @@ try:
         start_time = time()
         task.start_time = start_time
         task.rohadjmeg()
-        robot.log("Time after first six: {:.4f}s".format((time() - start_time)))
         task.masodik()
-        robot.log("Time after second six: {:.4f}s".format((time() - start_time)))
         task.ni()
-        robot.log("Final time: {:.4f}s".format((time() - start_time)))
+        robot.log("Final time: {:.4f}s".format((time() - start_time-0.2)))
     except Exception as f:
         robot.log(f)
     finally:

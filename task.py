@@ -104,27 +104,23 @@ class Task:
         self.grabber.on_to_position(speed=40, position=0)
 
         # hárta megy a felvelnni a 2. 3 kockát
-        self.robot.forwardCmWithGyro(speed=500, distance=-7, angle=90)
+        self.robot.forwardCmWithGyro(speed=500, distance=-40, angle=90)
         self.emelo.on_to_position(speed=80, position=0, block=False)
-        self.robot.forwardCmWithGyro(speed=500, distance=-25, angle=90)
-        self.robot.alignToBlack(speed=200, blackThreshold=7)
-        self.robot.forwardCmWithGyro(speed=500, distance=-10, angle=90)
         self.robot.turnToGyroAngle(speed=400, angle=-90)
         self.robot.forwardCmWithGyro(speed=800, distance=15, angle=-90)
         self.robot.alignToBlack(speed=200, blackThreshold=7)
-        self.robot.forwardCmWithGyro(speed=1200, distance=2, angle=-89)
+        self.robot.forwardCmWithGyro(speed=1200, distance=2, angle=-88)
         # self.robot.buttonPress()
         # felveszi a 2. 3 kockát
         self.felvesz()
         self.robot.turnToGyroAngle(speed=400, angle=90)
         # beviszi a 2. 3 kockát
-        self.robot.forwardCmWithGyro(speed=800, distance=24, angle=89)
+        self.robot.forwardCmWithGyro(speed=800, distance=24, angle=90)
         self.robot.alignToBlack(speed=200, blackThreshold=18.5)
-        self.emelo.on_to_position(speed=80, position=500)
+        self.emelo.on_to_position(speed=80, position=365)
 
-        self.robot.forwardCmWithGyro(speed=800, distance=23.7, angle=89)
+        self.robot.forwardCmWithGyro(speed=800, distance=23.7, angle=90)
         self.grabber.stop()
-        self.emelo.on_to_position(speed=100, position=380)
         self.grabber.on_to_position(speed=100, position=0)
 
         # hátra megy a fekete vonalig
@@ -245,20 +241,45 @@ class Task:
             pass
         self.robot.stop()
         self.robot.forwardCmWithGyro(speed=800, distance=14, angle=115)
-        self.robot.turnToGyroAngle(speed=400, angle=90)
-        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=90)
-        self.grabber.on_to_position(speed=100, position=120, block=True)
-        self.robot.turnToGyroAngle(speed=400, angle=45)
-        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=45)
-        self.robot.turnToGyroAngle(speed=400, angle=90)
-        self.robot.forwardCmWithGyro(speed=800, distance=36.5, angle=90)
-        self.robot.turnToGyroAngle(speed=400, angle=0)
-        self.robot.forwardCmWithGyro(speed=800, distance=10, angle=0)
+        self.robot.grabber.on_to_position(speed=100, position=110, block=True)
+        self.robot.left_motor.run_forever(speed_sp=-700)
+        while (self.robot.gyroSensor.angle-self.robot.gyroCorrection) < 90:
+            pass
+        self.robot.stop()
+        self.robot.forwardCmWithGyro(speed=800, distance=60, angle=90)
+        self.robot.right_motor.run_forever(speed_sp=700)
+        while (self.robot.gyroSensor.angle-self.robot.gyroCorrection) < 0:
+            pass
+        self.robot.stop()
+        self.robot.forwardCmWithGyro(speed=800, distance=25, angle=0)
 
 
 
 
 
+
+
+        # self.robot.left_motor.run_forever(speed_sp=700)
+        # while (self.robot.gyroSensor.angle-self.robot.gyroCorrection) < 115:
+        #     pass
+        # self.robot.stop()
+        # self.robot.forwardCmWithGyro(speed=800, distance=14, angle=115)
+        # self.robot.grabber.on_to_position(speed=100, position=110, block=True)
+        # self.robot.left_motor.run_forever(speed_sp=-700)
+        # while (self.robot.gyroSensor.angle-self.robot.gyroCorrection) < 90:
+        #     pass
+        # self.robot.stop()
+        # self.robot.forwardCmWithGyro(speed=800, distance=10, angle=90)
+        # self.grabber.on_to_position(speed=100, position=120, block=True)
+        # self.robot.left_motor.run_forever(speed_sp=700)
+        # while (self.robot.gyroSensor.angle-self.robot.gyroCorrection) < 45:
+        #     pass
+        # self.robot.stop()
+        # self.robot.forwardCmWithGyro(speed=800, distance=10, angle=45)
+        # self.robot.turnToGyroAngle(speed=400, angle=90)
+        # self.robot.forwardCmWithGyro(speed=800, distance=36.5, angle=90)
+        # self.robot.turnToGyroAngle(speed=400, angle=0)
+        # self.robot.forwardCmWithGyro(speed=800, distance=10, angle=0)
 
 
 
