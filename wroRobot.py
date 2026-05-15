@@ -71,9 +71,7 @@ class WroRobot:
 
         powerSupply = PowerSupply()
         button = Button()
-
         count = 0
-        self.log("Gyrocorrection: {}".format(self.gyroCorrection))
         while not button.enter:
             if powerSupply.measured_volts < 7.8 and count < 1:
                 self.sound.speak("Lawu voultaege")

@@ -29,7 +29,7 @@ def error(e):
         pass
 
     f = open('error.txt', 'w')
-    print("Error: \n\t{}\n\n\n\n".format(e), file=sys.stderr)
+    print("Error: \n\t{}\n".format(e), file=sys.stderr)
     f.write("Error: \n\t{}".format(e))
     Not_working = []
     Motor_ports = [OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D]
@@ -58,12 +58,14 @@ def error(e):
     f.close()
 
 
+
+
+
 try:
     robot = WroRobot()
     # robot.calibrate()
     task = Task(robot)
     try:
-
         leds.set_color('LEFT', 'AMBER')
         leds.set_color('RIGHT', 'AMBER')
         robot.starting()
@@ -73,18 +75,16 @@ try:
         task.emelo.stop_action = 'hold'
         task.grabber.position = 0
         task.emelo.position = 0
-        start_time = time()
-        task.start_time = start_time
+        task.start_time = time()
         task.rohadjmeg()
         task.masodik()
         task.ni()
-        robot.log("Final time: {:.4f}s".format((time() - start_time-0.2)))
+        task.final_time()
     except Exception as f:
         robot.log(f)
     finally:
         robot.stop()
         robot.gyroadatok.close()
-        exit()
 except Exception as e:
     print("Error: {}".format(e), file=sys.stderr)
     error(e)
