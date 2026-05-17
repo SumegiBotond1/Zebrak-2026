@@ -207,20 +207,40 @@ class WroRobot:
         target = current + angle
         self.turnToGyroAngle(angle=target, speed=speed)
 
-    def turnToGyroAngle(self, angle, speed=200):
+    def turnToGyroAngle(self, angle, speed=None, left_speed=None, right_speed=None):
         current = self.gyroSensor.angle - self.gyroCorrection
-        
-        if current < angle:
-            self.right_motor.run_forever(speed_sp=-abs(speed))
-            self.left_motor.run_forever(speed_sp= abs(speed))
-            while self.gyroSensor.angle - self.gyroCorrection < (angle - 2):
-                pass
-        else:
-            self.right_motor.run_forever(speed_sp=abs(speed))
-            self.left_motor.run_forever(speed_sp=-abs(speed))
-            while self.gyroSensor.angle - self.gyroCorrection > (angle + 2):
-                pass
-        self.stop()
+        if speed != None:
+            if current < angle:
+                self.right_motor.run_forever(speed_sp=-abs(speed))
+                self.left_motor.run_forever(speed_sp= abs(speed))
+                while self.gyroSensor.angle - self.gyroCorrection < (angle - 2):
+                    pass
+            else:
+                self.right_motor.run_forever(speed_sp=abs(speed))
+                self.left_motor.run_forever(speed_sp=-abs(speed))
+                while self.gyroSensor.angle - self.gyroCorrection > (angle + 2):
+                    pass
+            self.stop()
+        elif left_speed != None:
+            if current < angle:
+                self.left_motor.run_forever(speed_sp= abs(left_speed))
+                while self.gyroSensor.angle - self.gyroCorrection < (angle - 2):
+                    pass
+            else:
+                self.left_motor.run_forever(speed_sp=-abs(left_speed))
+                while self.gyroSensor.angle - self.gyroCorrection > (angle + 2):
+                    pass
+            self.stop()
+        elif right_speed != None:
+            if current < angle:
+                self.left_motor.run_forever(speed_sp= abs(right_speed))
+                while self.gyroSensor.angle - self.gyroCorrection < (angle - 2):
+                    pass
+            else:
+                self.left_motor.run_forever(speed_sp=-abs(right_speed))
+                while self.gyroSensor.angle - self.gyroCorrection > (angle + 2):
+                    pass
+            self.stop()
         
     def egyenesedes(self, angle=None, speed = 300, seconds=1.0):
         self.left_motor.run_timed(speed_sp=speed, time_sp=seconds*1000)
@@ -232,16 +252,16 @@ class WroRobot:
             time.sleep(0.01)
             self.setGyroCorrection(angle)
 
-    def alignToBlackWithSide(self, speed, blackThreshold = None, side="right"):
+    def alignToBlackWithSide(self, speed, left_threshold, right_threshold):
         self.left_motor.run_forever(speed_sp = speed)            
         self.right_motor.run_forever(speed_sp = speed)            
         while (self.left_motor.is_running or self.right_motor.is_running):
-            if side == "right":
-                if (self.rightColorSensor.isBlackReflection(blackThreshold)):
+            if right_threshold != None:
+                if (self.rightColorSensor.isBlackReflection(right_threshold)):
                     self.left_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
                     self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
-            elif side == "left":
-                if (self.leftColorSensor.isBlackReflection(blackThreshold)):
+            elif left_threshold:
+                if (self.leftColorSensor.isBlackReflection(left_threshold)):
                     self.left_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
                     self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
         self.stop()

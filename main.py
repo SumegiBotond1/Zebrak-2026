@@ -80,11 +80,10 @@ try:
         task.masodik()
         task.ni()
         task.final_time()
+        robot.gyroadatok.close()
+        robot.stop()
     except Exception as f:
         robot.log(f)
-    finally:
-        robot.stop()
-        robot.gyroadatok.close()
 except Exception as e:
     print("Error: {}".format(e), file=sys.stderr)
     error(e)
