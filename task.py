@@ -109,7 +109,7 @@ class Task:
 
         self.robot.forwardCmWithGyro(speed=800, distance=23.7, angle=90)
 4
-        self.grabber.on_to_position(speed=100, position=0)
+        self.grabber.on_to_position(speed=100, position=0)7)
 
 
         self.robot.forwardCmWithGyro(speed=800, distance=-45, angle=90)
@@ -227,9 +227,10 @@ class Task:
         self.robot.turnToGyroAngle(angle=0, right_speed=700)
         self.robot.forwardCmWithGyro(speed=800, distance=12, angle=0)
         self.e_g_nulla()
-        self.robot.forwardCm(speed=1500, distance=-10)
+        self.robot.forwardCmWithGyro(speed=1500, distance=-7, angle=0)
 
         self.robot.turnToGyroAngle(speed=500, angle=360)
+        self.robot.forwardCmWithGyro(speed=800, distance=5, angle=360)
         self.grabber.on_to_position(speed=100, position=120)
         self.robot.turnToGyroAngle(angle=270, left_speed=700)
         self.robot.forwardCmWithGyro(speed=100, distance=140, angle=271)
