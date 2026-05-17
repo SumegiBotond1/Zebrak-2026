@@ -234,7 +234,7 @@ class Task:
         self.grabber.on_to_position(speed=100, position=120)
         self.robot.turnToGyroAngle(angle=270, left_speed=700)
         self.robot.forwardCmWithGyro(speed=100, distance=140, angle=271)
-        self.e_g_nulla(var=True)
+        self.e_g_nulla(block=True)
 
 
 

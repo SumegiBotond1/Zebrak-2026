@@ -22,40 +22,36 @@ leds = Leds()
 sound = Sound()
 
 def error(e):
-    # sound.speak("ERROR")
+def error(e):
     leds.set_color('LEFT', 'RED')
-    leds.set_color('RIGHT', 'RED')
+    leds.set_color('RIGHT', 'YELLOW')
     while not button.enter:
         pass
-
-    f = open('error.txt', 'w')
-    print("Error: \n\t{}\n".format(e), file=sys.stderr)
-    f.write("Error: \n\t{}".format(e))
-    Not_working = []
-    Motor_ports = [OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D]
-    for port in Motor_ports:
-        try:
-            motor = MediumMotor(port)
-            motor.on_for_seconds(speed=50, seconds=0.5)
-            motor.on_to_position(speed=100, position=0)
-        except:
-            Not_working.append(port)
-    Sensor_ports = [INPUT_1, INPUT_2, INPUT_3, INPUT_4]
-    for port in Sensor_ports:
-        try:
-            if port == INPUT_1:
-                s = GyroSensor(port)
-                print("Test angle: {}".format(s.angle), file=sys.stderr)
-                f.write("Test angle: {}\n".format(s.angle))
-            else:
-                s = ColorSensor(port)
-                print("Test reflected: {}".format(s.reflected_light_intensity), file=sys.stderr)
-                f.write("Test reflected: {}\n".format(s.reflected_light_intensity))
-        except:
-            Not_working.append(port)
-    print("Ports that are not connected: {}".format(Not_working), file=sys.stderr)
-    f.write("Ports that are not connected: {}\n".format(Not_working))
-    f.close()
+    print(f"Error: \n\t{e}\n", file=sys.stderr)
+    not_working = []
+    
+    with open('error.txt', 'w') as f:
+        f.write(f"Error: \n\t{e}")
+        for port in [OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D]:
+            try:
+                motor = MediumMotor(port)
+                motor.on_for_seconds(speed=50, seconds=0.5)
+                motor.on_to_position(speed=100, position=0)
+            except Exception:
+                not_working.append(port)
+        for port in [INPUT_1, INPUT_2, INPUT_3]:
+            try:
+                s = GyroSensor(port) if port == INPUT_1 else ColorSensor(port)
+                val_type, val = ("angle", s.angle) if port == INPUT_1 else ("reflected", s.reflected_light_intensity)
+                
+                msg = f"Test {val_type}: {val}\n"
+                print(msg, file=sys.stderr, end="")
+                f.write(msg)
+            except Exception:
+                not_working.append(port)
+        summary = f"Ports that are not connected: {not_working}\n"
+        print(summary, file=sys.stderr, end="")
+        f.write(summary)
 
 
 
@@ -67,10 +63,10 @@ try:
     task = Task(robot)
     try:
         leds.set_color('LEFT', 'AMBER')
-        leds.set_color('RIGHT', 'AMBER')
+        leds.set_color('RIGHT', 'GREEN')
         robot.starting()
         leds.set_color('LEFT', 'AMBER')
-        leds.set_color('RIGHT', 'AMBER')
+        leds.set_color('RIGHT', 'GREEN')
         task.grabber.stop_action = 'hold'
         task.emelo.stop_action = 'hold'
         task.grabber.position = 0
