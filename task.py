@@ -85,7 +85,7 @@ class Task:
 
 
         self.robot.forwardCmWithGyro(speed=500, distance=28, angle=90)
-4
+
         self.grabber.on_to_position(speed=40, position=0)
 
 
@@ -108,8 +108,8 @@ class Task:
         self.robot.alignToBlack(speed=400, blackThreshold=18.5)
 
         self.robot.forwardCmWithGyro(speed=800, distance=23.7, angle=90)
-4
-        self.grabber.on_to_position(speed=100, position=0)7)
+
+        self.grabber.on_to_position(speed=100, position=0)
 
 
         self.robot.forwardCmWithGyro(speed=800, distance=-45, angle=90)
