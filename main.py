@@ -75,7 +75,7 @@ try:
         task.emelo.stop_action = 'hold'
         task.grabber.position = 0
         task.emelo.position = 0
-        task.start_time = time()
+        robot.start_time = time()
         task.rohadjmeg()
         task.masodik()
         task.ni()

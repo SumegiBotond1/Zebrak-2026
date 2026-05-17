@@ -26,7 +26,7 @@ class WroRobot:
 
         self.left_motor.ramp_up_sp = 500
         self.right_motor.ramp_up_sp = 500
-
+        self.start_time = 0
         if (leftColorSensorPort != None):
             self.leftColorSensor = MyColorSensor(port = leftColorSensorPort)
         else:
@@ -355,6 +355,28 @@ class WroRobot:
         for i, event in enumerate(self.displayedEvents):
             self.display.draw.text((0,i*30), event, font=fonts.load('luBS24'))
         self.display.update()  
+
+    def final_time(self):
+        elapsed_time = time() - self.start_time
+        self.log("Final time: {:.4f}s".format(elapsed_time))
+        with open('final_time.txt', 'w') as f:
+            f.write("{:.4f}\n".format(elapsed_time))
+        with open('run_history.txt', 'a') as f:
+            f.write("{:.4f}\n".format(elapsed_time))
+
+        try:
+            with open('run_history.txt', 'r') as f:
+                all_time = 0
+                line_count = 0
+                for line in f:
+                    line = line.strip()
+                    if line:
+                        all_time += float(line)
+                        line_count += 1
+            self.log("Average time: {:.2f}s".format(all_time / line_count))
+        except:
+            pass
+
 
     def forwardCm(self, speed, distance, stop=True):
         degrees = distance * (360 / 17.6)
