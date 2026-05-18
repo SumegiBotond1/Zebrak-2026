@@ -252,7 +252,7 @@ class WroRobot:
             time.sleep(0.01)
             self.setGyroCorrection(angle)
 
-    def alignToBlackWithSide(self, speed, left_threshold, right_threshold):
+    def alignToBlackWithSide(self, speed, left_threshold=None, right_threshold=None):
         self.left_motor.run_forever(speed_sp = speed)            
         self.right_motor.run_forever(speed_sp = speed)            
         while (self.left_motor.is_running or self.right_motor.is_running):
@@ -260,10 +260,12 @@ class WroRobot:
                 if (self.rightColorSensor.isBlackReflection(right_threshold)):
                     self.left_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
                     self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
-            elif left_threshold:
+            elif left_threshold !=None:
                 if (self.leftColorSensor.isBlackReflection(left_threshold)):
                     self.left_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
                     self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
+            else:
+                self.log("No threshold was given!!!")
         self.stop()
 
     def setGyroCorrection(self, angle):
@@ -316,9 +318,12 @@ class WroRobot:
                 self.right_motor.stop(stop_action=Motor.STOP_ACTION_HOLD)
         self.stop()
 
+    def checkBlackReflection(self):
+        while True:
+            self.log(self.leftColorSensor.getReflection(), self.rightColorSensor.getReflection())
+            time.sleep(0.2)
 
-
-
+    
 
     def startLog(self):
         try:
@@ -356,26 +361,6 @@ class WroRobot:
             self.display.draw.text((0,i*30), event, font=fonts.load('luBS24'))
         self.display.update()  
 
-    def final_time(self):
-        elapsed_time = time() - self.start_time
-        self.log("Final time: {:.4f}s".format(elapsed_time))
-        with open('final_time.txt', 'w') as f:
-            f.write("{:.4f}\n".format(elapsed_time))
-        with open('run_history.txt', 'a') as f:
-            f.write("{:.4f}\n".format(elapsed_time))
-
-        try:
-            with open('run_history.txt', 'r') as f:
-                all_time = 0
-                line_count = 0
-                for line in f:
-                    line = line.strip()
-                    if line:
-                        all_time += float(line)
-                        line_count += 1
-            self.log("Average time: {:.2f}s".format(all_time / line_count))
-        except:
-            pass
 
 
     def forwardCm(self, speed, distance, stop=True):

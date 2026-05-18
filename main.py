@@ -26,11 +26,11 @@ def error(e):
     leds.set_color('RIGHT', 'YELLOW')
     while not button.enter:
         pass
-    print(f"Error: \n\t{e}\n", file=sys.stderr)
+    print("Error: \n\t{}\n".format(e), file=sys.stderr)
     not_working = []
     
     with open('error.txt', 'w') as f:
-        f.write(f"Error: \n\t{e}")
+        f.write("Error: \n\t{}".format(e))
         for port in [OUTPUT_A, OUTPUT_B, OUTPUT_C, OUTPUT_D]:
             try:
                 motor = MediumMotor(port)
@@ -43,12 +43,12 @@ def error(e):
                 s = GyroSensor(port) if port == INPUT_1 else ColorSensor(port)
                 val_type, val = ("angle", s.angle) if port == INPUT_1 else ("reflected", s.reflected_light_intensity)
                 
-                msg = f"Test {val_type}: {val}\n"
+                msg = "Test {}: {}\n".format(val_type, val)
                 print(msg, file=sys.stderr, end="")
                 f.write(msg)
             except Exception:
                 not_working.append(port)
-        summary = f"Ports that are not connected: {not_working}\n"
+        summary = "Ports that are not connected: {}\n".format(not_working)
         print(summary, file=sys.stderr, end="")
         f.write(summary)
 
@@ -65,16 +65,18 @@ try:
         leds.set_color('RIGHT', 'GREEN')
         robot.starting()
         leds.set_color('LEFT', 'AMBER')
-        leds.set_color('RIGHT', 'GREEN')
+        leds.set_color('RIGHT', 'AMBER')
         task.grabber.stop_action = 'hold'
         task.emelo.stop_action = 'hold'
         task.grabber.position = 0
         task.emelo.position = 0
         robot.start_time = time()
         task.rohadjmeg()
+        robot.log("Time: {:.2f}".format(time()-robot.start_time))
         task.masodik()
+        robot.log("Time: {:.2f}".format(time()-robot.start_time))
         task.ni()
-        task.final_time()
+        robot.log("Time: {:.2f}".format(time()-robot.start_time))
         robot.gyroadatok.close()
         robot.stop()
     except Exception as f:
