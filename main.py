@@ -22,7 +22,6 @@ leds = Leds()
 sound = Sound()
 
 def error(e):
-def error(e):
     leds.set_color('LEFT', 'RED')
     leds.set_color('RIGHT', 'YELLOW')
     while not button.enter:
