@@ -62,7 +62,7 @@ try:
     task = Task(robot)
     try:
         leds.set_color('LEFT', 'AMBER')
-        leds.set_color('RIGHT', 'GREEN')
+        leds.set_color('RIGHT', 'AMBER')
         robot.starting()
         leds.set_color('LEFT', 'AMBER')
         leds.set_color('RIGHT', 'AMBER')
@@ -76,7 +76,7 @@ try:
         task.masodik()
         robot.log("Time: {:.2f}".format(time()-robot.start_time))
         task.ni()
-        robot.log("Time: {:.2f}".format(time()-robot.start_time))
+        robot.log("Final time: {:.2f}".format(time()-robot.start_time))
         robot.gyroadatok.close()
         robot.stop()
     except Exception as f:

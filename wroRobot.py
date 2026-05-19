@@ -266,6 +266,8 @@ class WroRobot:
     def setGyroCorrection(self, angle):
         CurrentAngle = self.gyroSensor.angle
         self.gyroCorrection = CurrentAngle - angle
+        self.gyroCorrection = CurrentAngle - angle
+        self.gyroCorrection = CurrentAngle - angle
 
 
 
